@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package worker;
+
+service WorkerService {
+  rpc ManageWorker (stream WorkerCommand) returns (stream WorkerStatus);
+}
+
+message WorkerCommand {
+  string worker_id = 1;
+  string action = 2;
+}
+
+message WorkerStatus {
+  string worker_id = 1;
+  string status = 2;
+  string message = 3;
+}
